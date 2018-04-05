@@ -1,0 +1,27 @@
+{
+  "name": "thunder-client",
+  "version": "0.1.0",
+  "description": "A JavaScript client for the Thunder API",
+  "main": "thunder-client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RohanNagar/thunder-client-js.git"
+  },
+  "keywords": [
+    "thunder",
+    "client",
+    "API"
+  ],
+  "author": "Rohan Nagar <rohannagar11@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RohanNagar/thunder-client-js/issues"
+  },
+  "homepage": "https://github.com/RohanNagar/thunder-client-js#readme",
+  "dependencies": {
+    "request": "^2.85.0"
+  }
+}

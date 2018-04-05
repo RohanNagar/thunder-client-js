@@ -1,2 +1,4 @@
 # thunder-client-js
-The official JavaScript client library for Thunder
+
+The official JavaScript client library for the Thunder API.
+
