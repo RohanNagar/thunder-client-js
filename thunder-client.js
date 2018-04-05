@@ -136,13 +136,11 @@ class ThunderClient {
    *
    * @param {string} email - The email address of the user to verify.
    * @param {string} token - The verification token that should match the generated token.
-   * @param {string} password - The password of the user to verify.
    * @param {function} callback - The function to call when the method completes.
    */
-  verifyUser(email, token, password, callback) {
+  verifyUser(email, token, callback) {
     this.baseRequest.get({
       url:     '/verify',
-      headers: { password: password },
       qs:      { email: email, token: token }
     }, (err, res, body) => {
       if (err) return callback(err);
