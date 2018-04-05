@@ -2,10 +2,10 @@
   "name": "thunder-client",
   "version": "0.1.0",
   "description": "A JavaScript client for the Thunder API",
-  "main": "thunder-client.js",
+  "main": "src/thunder-client.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-docs": "node_modules/.bin/jsdoc -d docs/ -t node_modules/docdash -R ./README.md thunder-client.js"
+    "test": "mocha",
+    "generate-docs": "jsdoc -d docs/ -t node_modules/docdash -R ./README.md src/thunder-client.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "docdash": "^0.4.0",
-    "jsdoc": "^3.5.5"
+    "jsdoc": "^3.5.5",
+    "mocha": "^5.0.5"
   }
 }
