@@ -3,6 +3,8 @@
 
 The official JavaScript client library for the Thunder API.
 
+See the docs [here](https://rohannagar.github.io/thunder-client-js/)
+
 ## Usage
 
 First, install the package with NPM:
