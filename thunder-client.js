@@ -158,6 +158,8 @@ class ThunderClient {
  * @param {Method} method - The method that was called to produce the response.
  * @param {function} callback - The function to call when the method completes.
  * @return When the response check is complete.
+ *
+ * @private
  */
 function checkResponse(res, body, method, callback) {
   if (res.statusCode !== method.expected) {
