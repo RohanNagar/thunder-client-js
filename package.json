@@ -4,7 +4,8 @@
   "description": "A JavaScript client for the Thunder API",
   "main": "thunder-client.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-docs": "node_modules/.bin/jsdoc -d docs/ -t node_modules/docdash thunder-client.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,9 @@
   "homepage": "https://github.com/RohanNagar/thunder-client-js#readme",
   "dependencies": {
     "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "docdash": "^0.4.0",
+    "jsdoc": "^3.5.5"
   }
 }
