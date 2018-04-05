@@ -140,8 +140,8 @@ class ThunderClient {
    */
   verifyUser(email, token, callback) {
     this.baseRequest.get({
-      url:     '/verify',
-      qs:      { email: email, token: token }
+      url: '/verify',
+      qs:  { email: email, token: token }
     }, (err, res, body) => {
       if (err) return callback(err);
 
@@ -163,7 +163,7 @@ function checkResponse(res, body, method, callback) {
   if (res.statusCode !== method.expected) {
     return callback(
       new Error('The status code ' + res.statusCode
-        + ' does not match expected ' + method.expected));
+        + ' does not match expected ' + method.expected), body);
   }
 
   let result;
