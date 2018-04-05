@@ -1,4 +1,5 @@
-# thunder-client-js
+# thunder-client [JavaScript]
+[![npm version](https://badge.fury.io/js/thunder-client.svg)](https://badge.fury.io/js/thunder-client)
 
 The official JavaScript client library for the Thunder API.
 
