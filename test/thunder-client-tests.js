@@ -66,7 +66,7 @@ describe('<thunder-client.js>', () => {
       sandbox.stub(request, 'get').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.qs).to.deep.equal({ email: email });
-        expect(ops.headers).to.deep.equal({ password: password});
+        expect(ops.headers).to.deep.equal({ password: password });
 
         callback(null, { statusCode: 200 }, user);
       });
@@ -104,7 +104,7 @@ describe('<thunder-client.js>', () => {
       sandbox.stub(request, 'put').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.qs).to.deep.equal({ email: email });
-        expect(ops.headers).to.deep.equal({ password: password});
+        expect(ops.headers).to.deep.equal({ password: password });
         expect(ops.body).to.deep.equal(user);
         expect(ops.json).to.be.true;
 
@@ -156,7 +156,7 @@ describe('<thunder-client.js>', () => {
       sandbox.stub(request, 'delete').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.qs).to.deep.equal({ email: email });
-        expect(ops.headers).to.deep.equal({ password: password});
+        expect(ops.headers).to.deep.equal({ password: password });
 
         callback(null, { statusCode: 200 }, user);
       });
@@ -194,7 +194,7 @@ describe('<thunder-client.js>', () => {
       sandbox.stub(request, 'post').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify');
         expect(ops.qs).to.deep.equal({ email: email });
-        expect(ops.headers).to.deep.equal({ password: password});
+        expect(ops.headers).to.deep.equal({ password: password });
 
         callback(null, { statusCode: 200 }, user);
       });
