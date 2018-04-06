@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - node
+
+# Restrict builds to master and tags
+branches:
+  only:
+    - master
+    - /^[v](\d+\.)?(\d+\.)?(\d+)$/
+
