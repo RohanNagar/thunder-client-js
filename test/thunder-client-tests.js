@@ -4,7 +4,6 @@ const chai          = require('chai');
 const request       = require('request');
 
 let expect = chai.expect;
-let assert = chai.assert;
 
 // Constant test values
 let baseUrl = 'http://localhost:8080';
@@ -15,16 +14,16 @@ let user = { email: email };
 
 describe('<thunder-client.js>', () => {
   let sandbox = sinon.sandbox.create();
-  let defaultStub = sandbox.stub(request, 'defaults').returns(request);
+  sandbox.stub(request, 'defaults').returns(request);
   let thunder = new ThunderClient(baseUrl, apiKey, apiSecret);
-  
+
   afterEach(() => {
     sandbox.restore();
   });
 
   describe('#createUser()', () => {
     it('uses the correct request data', () => {
-      let requestStub = sandbox.stub(request, 'post').callsFake(function(ops, callback) {
+      sandbox.stub(request, 'post').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.json).to.be.true;
         expect(ops.body).to.deep.equal(user);
@@ -38,7 +37,7 @@ describe('<thunder-client.js>', () => {
     });
 
     it('calls back on request error', () => {
-      let requestStub = sandbox.stub(request, 'post').callsFake(function(ops, callback) {
+      sandbox.stub(request, 'post').callsFake(function(ops, callback) {
         callback(new Error('An error occurred.'));
       });
 
@@ -49,7 +48,7 @@ describe('<thunder-client.js>', () => {
     });
 
     it('calls back on status code error', () => {
-      let requestStub = sandbox.stub(request, 'post').callsFake(function(ops, callback) {
+      sandbox.stub(request, 'post').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad request');
       });
 
