@@ -33,8 +33,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 201 }, user);
       });
 
-      thunder.createUser(user, (err, result) => {
+      thunder.createUser(user, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(201);
       });
     });
 
@@ -43,8 +44,9 @@ describe('<thunder-client.js>', () => {
         callback(new Error('A create error occurred.'));
       });
 
-      thunder.createUser(user, (err, result) => {
+      thunder.createUser(user, (err, statusCode, result) => {
         expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
         expect(err.message).to.equal('A create error occurred.');
       });
     });
@@ -54,9 +56,10 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 400 }, 'Bad create request');
       });
 
-      thunder.createUser(user, (err, result) => {
+      thunder.createUser(user, (err, statusCode, result) => {
         expect(err.message).to.equal('The status code 400 does not match expected 201');
         expect(result).to.equal('Bad create request');
+        expect(statusCode).to.equal(400);
       });
     });
   });
@@ -71,8 +74,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 200 }, user);
       });
 
-      thunder.getUser(email, password, (err, result) => {
+      thunder.getUser(email, password, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
       });
     });
 
@@ -81,8 +85,9 @@ describe('<thunder-client.js>', () => {
         callback(new Error('A get error occurred.'));
       });
 
-      thunder.getUser(email, password, (err, result) => {
+      thunder.getUser(email, password, (err, statusCode, result) => {
         expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
         expect(err.message).to.equal('A get error occurred.');
       });
     });
@@ -92,9 +97,10 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 400 }, 'Bad get request');
       });
 
-      thunder.getUser(email, password, (err, result) => {
+      thunder.getUser(email, password, (err, statusCode, result) => {
         expect(err.message).to.equal('The status code 400 does not match expected 200');
         expect(result).to.equal('Bad get request');
+        expect(statusCode).to.equal(400);
       });
     });
   });
@@ -111,8 +117,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 200 }, user);
       });
 
-      thunder.updateUser(email, password, user, (err, result) => {
+      thunder.updateUser(email, password, user, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
       });
     });
 
@@ -123,8 +130,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 200 }, user);
       });
 
-      thunder.updateUser(null, password, user, (err, result) => {
+      thunder.updateUser(null, password, user, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
       });
     });
 
@@ -133,8 +141,9 @@ describe('<thunder-client.js>', () => {
         callback(new Error('An update error occurred.'));
       });
 
-      thunder.updateUser(email, password, user, (err, result) => {
+      thunder.updateUser(email, password, user, (err, statusCode, result) => {
         expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
         expect(err.message).to.equal('An update error occurred.');
       });
     });
@@ -144,9 +153,10 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 400 }, 'Bad update request');
       });
 
-      thunder.updateUser(email, password, user, (err, result) => {
+      thunder.updateUser(email, password, user, (err, statusCode, result) => {
         expect(err.message).to.equal('The status code 400 does not match expected 200');
         expect(result).to.equal('Bad update request');
+        expect(statusCode).to.equal(400);
       });
     });
   });
@@ -161,8 +171,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 200 }, user);
       });
 
-      thunder.deleteUser(email, password, (err, result) => {
+      thunder.deleteUser(email, password, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
       });
     });
 
@@ -171,8 +182,9 @@ describe('<thunder-client.js>', () => {
         callback(new Error('A delete error occurred.'));
       });
 
-      thunder.deleteUser(email, password, (err, result) => {
+      thunder.deleteUser(email, password, (err, statusCode, result) => {
         expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
         expect(err.message).to.equal('A delete error occurred.');
       });
     });
@@ -182,9 +194,10 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 400 }, 'Bad delete request');
       });
 
-      thunder.deleteUser(email, password, (err, result) => {
+      thunder.deleteUser(email, password, (err, statusCode, result) => {
         expect(err.message).to.equal('The status code 400 does not match expected 200');
         expect(result).to.equal('Bad delete request');
+        expect(statusCode).to.equal(400);
       });
     });
   });
@@ -199,8 +212,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 200 }, user);
       });
 
-      thunder.sendEmail(email, password, (err, result) => {
+      thunder.sendEmail(email, password, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
       });
     });
 
@@ -209,8 +223,9 @@ describe('<thunder-client.js>', () => {
         callback(new Error('A send email error occurred.'));
       });
 
-      thunder.sendEmail(email, password, (err, result) => {
+      thunder.sendEmail(email, password, (err, statusCode, result) => {
         expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
         expect(err.message).to.equal('A send email error occurred.');
       });
     });
@@ -220,9 +235,10 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 400 }, 'Bad send email request');
       });
 
-      thunder.sendEmail(email, password, (err, result) => {
+      thunder.sendEmail(email, password, (err, statusCode, result) => {
         expect(err.message).to.equal('The status code 400 does not match expected 200');
         expect(result).to.equal('Bad send email request');
+        expect(statusCode).to.equal(400);
       });
     });
   });
@@ -236,8 +252,9 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 200 }, user);
       });
 
-      thunder.verifyUser(email, token, (err, result) => {
+      thunder.verifyUser(email, token, (err, statusCode, result) => {
         expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
       });
     });
 
@@ -246,8 +263,9 @@ describe('<thunder-client.js>', () => {
         callback(new Error('A verify error occurred.'));
       });
 
-      thunder.verifyUser(email, token, (err, result) => {
+      thunder.verifyUser(email, token, (err, statusCode, result) => {
         expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
         expect(err.message).to.equal('A verify error occurred.');
       });
     });
@@ -257,9 +275,10 @@ describe('<thunder-client.js>', () => {
         callback(null, { statusCode: 400 }, 'Bad verify request');
       });
 
-      thunder.verifyUser(email, token, (err, result) => {
+      thunder.verifyUser(email, token, (err, statusCode, result) => {
         expect(err.message).to.equal('The status code 400 does not match expected 200');
         expect(result).to.equal('Bad verify request');
+        expect(statusCode).to.equal(400);
       });
     });
   });

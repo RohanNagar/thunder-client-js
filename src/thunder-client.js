@@ -165,7 +165,7 @@ function checkResponse(res, body, method, callback) {
   if (res.statusCode !== method.expected) {
     return callback(
       new Error('The status code ' + res.statusCode
-        + ' does not match expected ' + method.expected), body);
+        + ' does not match expected ' + method.expected), res.statusCode, body);
   }
 
   let result;
@@ -176,7 +176,7 @@ function checkResponse(res, body, method, callback) {
     result = body;
   }
 
-  return callback(null, result);
+  return callback(null, res.statusCode, result);
 }
 
 module.exports = ThunderClient;
