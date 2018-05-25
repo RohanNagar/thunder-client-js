@@ -244,10 +244,10 @@ describe('<thunder-client.js>', () => {
   });
 
   describe('#verifyUser()', () => {
-    it('uses the correct request data', () => {
+    it('uses the correct default request data', () => {
       sandbox.stub(request, 'get').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify');
-        expect(ops.qs).to.deep.equal({ email: email, token: token });
+        expect(ops.qs).to.deep.equal({ email: email, token: token, response_type: 'json' });
 
         callback(null, { statusCode: 200 }, user);
       });
@@ -256,6 +256,43 @@ describe('<thunder-client.js>', () => {
         expect(result).to.deep.equal(user);
         expect(statusCode).to.equal(200);
       });
+    });
+
+    it('uses the correct request data when HTML is specified', () => {
+      sandbox.stub(request, 'get').callsFake(function(ops, callback) {
+        expect(ops.url).to.equal('/verify');
+        expect(ops.qs).to.deep.equal({ email: email, token: token, response_type: 'html' });
+
+        callback(null, { statusCode: 200 }, user);
+      });
+
+      thunder.verifyUser(email, token, (err, statusCode, result) => {
+        expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
+      }, 'html');
+    });
+
+    it('uses the correct request data when JSON is specified', () => {
+      sandbox.stub(request, 'get').callsFake(function(ops, callback) {
+        expect(ops.url).to.equal('/verify');
+        expect(ops.qs).to.deep.equal({ email: email, token: token, response_type: 'json' });
+
+        callback(null, { statusCode: 200 }, user);
+      });
+
+      thunder.verifyUser(email, token, (err, statusCode, result) => {
+        expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
+      }, 'json');
+    });
+
+    it('calls back on bad responseType error', () => {
+      thunder.verifyUser(email, token, (err, statusCode, result) => {
+        expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
+        expect(err.message).to.equal('The response type badType is not accepted.'
+          + '\nUse either "html" or "json".');
+      }, 'badType');
     });
 
     it('calls back on request error', () => {

@@ -137,11 +137,19 @@ class ThunderClient {
    * @param {string} email - The email address of the user to verify.
    * @param {string} token - The verification token that should match the generated token.
    * @param {function} callback - The function to call when the method completes.
+   * @param {string} responseType - The type of response to recieve.
+   *   Must be either 'html' or 'json'. Defaults to 'json'.
+   * @return Upon error or after successfully sending the GET request.
    */
-  verifyUser(email, token, callback) {
+  verifyUser(email, token, callback, responseType='json') {
+    if (responseType !== 'json' && responseType !== 'html') {
+      return callback(new Error('The response type ' + responseType + ' is not accepted.'
+          + '\nUse either "html" or "json".'));
+    }
+
     this.baseRequest.get({
       url: '/verify',
-      qs:  { email: email, token: token }
+      qs:  { email: email, token: token, response_type: responseType }
     }, (err, res, body) => {
       if (err) return callback(err);
 
@@ -180,4 +188,3 @@ function checkResponse(res, body, method, callback) {
 }
 
 module.exports = ThunderClient;
-
