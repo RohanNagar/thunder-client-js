@@ -172,8 +172,8 @@ class ThunderClient {
 function checkResponse(res, body, method, callback) {
   if (res.statusCode !== method.expected) {
     return callback(
-      new Error('The status code ' + res.statusCode
-        + ' does not match expected ' + method.expected), res.statusCode, body);
+        new Error('The status code ' + res.statusCode
+          + ' does not match expected ' + method.expected), res.statusCode, body);
   }
 
   let result;
