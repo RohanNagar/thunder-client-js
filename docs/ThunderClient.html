@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
     <title>ThunderClient - Documentation</title>
-
+    
+    
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
@@ -11,6 +13,7 @@
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -22,7 +25,8 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ThunderClient.html">ThunderClient</a><ul class='methods'><li data-type='method'><a href="ThunderClient.html#createUser">createUser</a></li><li data-type='method'><a href="ThunderClient.html#deleteUser">deleteUser</a></li><li data-type='method'><a href="ThunderClient.html#getUser">getUser</a></li><li data-type='method'><a href="ThunderClient.html#sendEmail">sendEmail</a></li><li data-type='method'><a href="ThunderClient.html#updateUser">updateUser</a></li><li data-type='method'><a href="ThunderClient.html#verifyUser">verifyUser</a></li></ul></li></ul>
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ThunderClient.html">ThunderClient</a><ul class='methods'><li data-type='method'><a href="ThunderClient.html#createUser">createUser</a></li><li data-type='method'><a href="ThunderClient.html#deleteUser">deleteUser</a></li><li data-type='method'><a href="ThunderClient.html#getUser">getUser</a></li><li data-type='method'><a href="ThunderClient.html#resetVerificationStatus">resetVerificationStatus</a></li><li data-type='method'><a href="ThunderClient.html#sendEmail">sendEmail</a></li><li data-type='method'><a href="ThunderClient.html#updateUser">updateUser</a></li><li data-type='method'><a href="ThunderClient.html#verifyUser">verifyUser</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -49,9 +53,10 @@
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
+            
 
     
     <h2>Constructor</h2>
@@ -69,7 +74,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line15">line 15</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -231,8 +236,9 @@
 
 
 
+        
+        </div>
     
-    </div>
 
     
 
@@ -266,7 +272,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line38">line 38</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -423,7 +429,7 @@ Creates a new Thunder user.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line101">line 101</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -603,7 +609,7 @@ Deletes a Thunder user.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line58">line 58</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -771,6 +777,186 @@ Gets a Thunder user.
 
     
 
+    <h4 class="name" id="resetVerificationStatus"><span class="type-signature"></span>resetVerificationStatus<span class="signature">(email, password, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line169">line 169</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    POST /verify/reset
+Resets a user's email verification status.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The user's email address.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The user's password.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to call when the method completes.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="sendEmail"><span class="type-signature"></span>sendEmail<span class="signature">(email, password, callback)</span><span class="type-signature"></span></h4>
 
     
@@ -783,7 +969,7 @@ Gets a Thunder user.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line121">line 121</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -963,7 +1149,7 @@ Creates and sends a new verification email.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line79">line 79</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -1166,7 +1352,7 @@ Updates a Thunder user.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line144">line 144</a>
+        <a href="thunder-client.js.html">thunder-client.js</a>, <a href="thunder-client.js.html#line145">line 145</a>
     </li></ul></dd>
     
 
@@ -1396,15 +1582,19 @@ Verifies a user. Simulates the user clicking the URL in the email.
 
 
 
+    
+    
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Sep 05 2018 00:45:31 GMT+0000 (UTC) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Oct 05 2018 21:34:55 GMT+0000 (UTC) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
+
+
 </body>
 </html>
