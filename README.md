@@ -6,6 +6,11 @@ The official JavaScript client library for the Thunder API.
 
 See the docs [here](https://rohannagar.github.io/thunder-client-js/)
 
+## Version Compatibility
+
+- Thunder 2.1.0 -> v0.4.0 or higher
+- Thunder 2.0.0 -> v0.3.0 or higher
+
 ## Usage
 
 First, install the package with NPM:
