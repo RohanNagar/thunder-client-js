@@ -319,5 +319,46 @@ describe('<thunder-client.js>', () => {
       });
     });
   });
+
+  describe('#resetVerificationStatus()', () => {
+    it('uses the correct request data', () => {
+      sandbox.stub(request, 'post').callsFake(function(ops, callback) {
+        expect(ops.url).to.equal('/verify/reset');
+        expect(ops.qs).to.deep.equal({ email: email });
+        expect(ops.headers).to.deep.equal({ password: password });
+
+        callback(null, { statusCode: 200 }, user);
+      });
+
+      thunder.resetVerificationStatus(email, password, (err, statusCode, result) => {
+        expect(result).to.deep.equal(user);
+        expect(statusCode).to.equal(200);
+      });
+    });
+
+    it('calls back on request error', () => {
+      sandbox.stub(request, 'post').callsFake(function(ops, callback) {
+        callback(new Error('A send email error occurred.'));
+      });
+
+      thunder.resetVerificationStatus(email, password, (err, statusCode, result) => {
+        expect(result).to.be.undefined;
+        expect(statusCode).to.be.undefined;
+        expect(err.message).to.equal('A send email error occurred.');
+      });
+    });
+
+    it('calls back on status code error', () => {
+      sandbox.stub(request, 'post').callsFake(function(ops, callback) {
+        callback(null, { statusCode: 400 }, 'Bad reset verification status request');
+      });
+
+      thunder.resetVerificationStatus(email, password, (err, statusCode, result) => {
+        expect(err.message).to.equal('The status code 400 does not match expected 200');
+        expect(result).to.equal('Bad reset verification status request');
+        expect(statusCode).to.equal(400);
+      });
+    });
+  });
 });
 

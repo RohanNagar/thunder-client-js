@@ -6,7 +6,8 @@ const Method = {
   PUT:    { name: 'PUT', expected: 200 },
   DELETE: { name: 'DELETE', expected: 200 },
   VERIFY: { name: 'VERIFY', expected: 200 },
-  EMAIL:  { name: 'EMAIL', expected: 200 }
+  EMAIL:  { name: 'EMAIL', expected: 200 },
+  RESET:  { name: 'RESET', expected: 200 }
 };
 
 /**
@@ -154,6 +155,26 @@ class ThunderClient {
       if (err) return callback(err);
 
       return checkResponse(res, body, Method.VERIFY, callback);
+    });
+  }
+
+  /**
+   * POST /verify/reset
+   * Resets a user's email verification status.
+   *
+   * @param {string} email - The user's email address.
+   * @param {string} password - The user's password.
+   * @param {function} callback - The function to call when the method completes.
+   */
+  resetVerificationStatus(email, password, callback) {
+    this.baseRequest.post({
+      url:     '/verify/reset',
+      headers: { password: password },
+      qs:      { email: email }
+    }, (err, res, body) => {
+      if (err) return callback(err);
+
+      return checkResponse(res, body, Method.RESET, callback);
     });
   }
 }
