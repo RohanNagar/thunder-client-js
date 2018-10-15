@@ -3,21 +3,21 @@ const sinon         = require('sinon');
 const chai          = require('chai');
 const request       = require('request');
 
-let expect = chai.expect;
+const expect = chai.expect;
 
 // Constant test values
-let baseUrl = 'http://localhost:8080';
-let apiKey = 'apiKey';
-let apiSecret = 'apiSecret';
-let email = 'test@sanctionco.com';
-let password = 'secure-password';
-let token = 'generated-token';
-let user = { email: email, password: password };
+const baseUrl = 'http://localhost:8080';
+const apiKey = 'apiKey';
+const apiSecret = 'apiSecret';
+const email = 'test@sanctionco.com';
+const password = 'secure-password';
+const token = 'generated-token';
+const user = { email: email, password: password };
 
 describe('<thunder-client.js>', () => {
-  let sandbox = sinon.sandbox.create();
+  const sandbox = sinon.sandbox.create();
   sandbox.stub(request, 'defaults').returns(request);
-  let thunder = new ThunderClient(baseUrl, apiKey, apiSecret);
+  const thunder = new ThunderClient(baseUrl, apiKey, apiSecret);
 
   afterEach(() => {
     sandbox.restore();
