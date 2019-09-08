@@ -290,8 +290,8 @@ describe('<thunder-client.js>', () => {
       thunder.verifyUser(email, token, (err, statusCode, result) => {
         expect(result).to.be.undefined;
         expect(statusCode).to.be.undefined;
-        expect(err.message).to.equal('The response type badType is not accepted.'
-          + '\nUse either "html" or "json".');
+        expect(err.message).to.equal('The response type badType is not accepted.' +
+            '\nUse either "html" or "json".');
       }, 'badType');
     });
 

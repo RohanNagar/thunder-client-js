@@ -144,8 +144,8 @@ class ThunderClient {
    */
   verifyUser(email, token, callback, responseType='json') {
     if (responseType !== 'json' && responseType !== 'html') {
-      return callback(new Error('The response type ' + responseType + ' is not accepted.'
-          + '\nUse either "html" or "json".'));
+      return callback(new Error('The response type ' + responseType + ' is not accepted.' +
+          '\nUse either "html" or "json".'));
     }
 
     this.baseRequest.get({
@@ -193,8 +193,8 @@ class ThunderClient {
 function checkResponse(res, body, method, callback) {
   if (res.statusCode !== method.expected) {
     return callback(
-        new Error('The status code ' + res.statusCode
-          + ' does not match expected ' + method.expected), res.statusCode, body);
+        new Error('The status code ' + res.statusCode +
+            ' does not match expected ' + method.expected), res.statusCode, body);
   }
 
   let result;
