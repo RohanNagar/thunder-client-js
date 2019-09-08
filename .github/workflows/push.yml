@@ -1,0 +1,30 @@
+on: push
+name: Build
+jobs:
+  npmCi:
+    name: npm ci
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: npm ci
+      uses: actions/npm@6309cd9
+      with:
+        args: ci
+    - name: npm lint
+      uses: actions/npm@6309cd9
+      with:
+        args: run lint
+    - name: npm test
+      uses: actions/npm@6309cd9
+      with:
+        args: test
+    - name: filter tags
+      uses: actions/bin/filter@e96fd9a
+      with:
+        args: tag
+    - name: npm publish
+      uses: actions/npm@6309cd9
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      with:
+        args: publish --access public
