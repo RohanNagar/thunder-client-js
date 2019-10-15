@@ -24,7 +24,7 @@ Then, require the package and use it to call API methods:
 const ThunderClient = require('thunder-client');
 
 let thunder = new ThunderClient('http://thunder.sanctionco.com', 'application', 'secret');
-thunder.getUser('sample@sanctionco.com', 'secure-password', (err, result) => {
+thunder.getUser('sample@sanctionco.com', 'secure-password', (err, statusCode, result) => {
   if (err) return console.log(err);
 
   console.log(result);
