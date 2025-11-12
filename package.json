@@ -1,6 +1,6 @@
 {
   "name": "thunder-client",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A JavaScript client for the Thunder API",
   "author": "Rohan Nagar <rohannagar11@gmail.com>",
   "license": "MIT",
