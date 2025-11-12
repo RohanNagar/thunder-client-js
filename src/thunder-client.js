@@ -201,7 +201,7 @@ function checkResponse(res, body, method, callback) {
 
   try {
     result = JSON.parse(body);
-  } catch (e) {
+  } catch (_e) {
     result = body;
   }
 

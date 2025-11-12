@@ -9,10 +9,11 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^1.7.2",
     "chai": "^6.0.0",
     "docdash": "^2.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-mocha": "^11.2.0",
     "jsdoc": "^4.0.0",
     "mocha": "^11.0.1",
     "sinon": "^21.0.0"

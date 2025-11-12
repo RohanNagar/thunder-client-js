@@ -14,16 +14,18 @@ const password = 'secure-password';
 const token = 'generated-token';
 const user = { email: email, password: password };
 
-describe('<thunder-client.js>', () => {
-  sinon.stub(request, 'defaults').returns(request);
-  const thunder = new ThunderClient(baseUrl, apiKey, apiSecret);
+// Setup
+sinon.stub(request, 'defaults').returns(request);
+const thunder = new ThunderClient(baseUrl, apiKey, apiSecret);
 
-  afterEach(() => {
+
+describe('<thunder-client.js>', function() {
+  afterEach(function() {
     sinon.restore();
   });
 
-  describe('#createUser()', () => {
-    it('uses the correct request data', () => {
+  describe('#createUser()', function() {
+    it('uses the correct request data', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.json).to.be.true;
@@ -38,7 +40,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         callback(new Error('A create error occurred.'));
       });
@@ -50,7 +52,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad create request');
       });
@@ -63,8 +65,8 @@ describe('<thunder-client.js>', () => {
     });
   });
 
-  describe('#getUser()', () => {
-    it('uses the correct request data', () => {
+  describe('#getUser()', function() {
+    it('uses the correct request data', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.qs).to.deep.equal({ email: email });
@@ -79,7 +81,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         callback(new Error('A get error occurred.'));
       });
@@ -91,7 +93,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad get request');
       });
@@ -104,8 +106,8 @@ describe('<thunder-client.js>', () => {
     });
   });
 
-  describe('#updateUser()', () => {
-    it('uses the correct request data for an email update', () => {
+  describe('#updateUser()', function() {
+    it('uses the correct request data for an email update', function() {
       sinon.stub(request, 'put').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.qs).to.deep.equal({ email: email });
@@ -122,7 +124,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('uses the correct query param data for a general update', () => {
+    it('uses the correct query param data for a general update', function() {
       sinon.stub(request, 'put').callsFake(function(ops, callback) {
         expect(ops.qs).to.deep.equal({});
 
@@ -135,7 +137,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'put').callsFake(function(ops, callback) {
         callback(new Error('An update error occurred.'));
       });
@@ -147,7 +149,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'put').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad update request');
       });
@@ -160,8 +162,8 @@ describe('<thunder-client.js>', () => {
     });
   });
 
-  describe('#deleteUser()', () => {
-    it('uses the correct request data', () => {
+  describe('#deleteUser()', function() {
+    it('uses the correct request data', function() {
       sinon.stub(request, 'delete').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/users');
         expect(ops.qs).to.deep.equal({ email: email });
@@ -176,7 +178,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'delete').callsFake(function(ops, callback) {
         callback(new Error('A delete error occurred.'));
       });
@@ -188,7 +190,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'delete').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad delete request');
       });
@@ -201,8 +203,8 @@ describe('<thunder-client.js>', () => {
     });
   });
 
-  describe('#sendEmail()', () => {
-    it('uses the correct request data', () => {
+  describe('#sendEmail()', function() {
+    it('uses the correct request data', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify');
         expect(ops.qs).to.deep.equal({ email: email });
@@ -217,7 +219,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         callback(new Error('A send email error occurred.'));
       });
@@ -229,7 +231,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad send email request');
       });
@@ -242,8 +244,8 @@ describe('<thunder-client.js>', () => {
     });
   });
 
-  describe('#verifyUser()', () => {
-    it('uses the correct default request data', () => {
+  describe('#verifyUser()', function() {
+    it('uses the correct default request data', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify');
         expect(ops.qs).to.deep.equal({ email: email, token: token, response_type: 'json' });
@@ -257,7 +259,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('uses the correct request data when HTML is specified', () => {
+    it('uses the correct request data when HTML is specified', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify');
         expect(ops.qs).to.deep.equal({ email: email, token: token, response_type: 'html' });
@@ -271,7 +273,7 @@ describe('<thunder-client.js>', () => {
       }, 'html');
     });
 
-    it('uses the correct request data when JSON is specified', () => {
+    it('uses the correct request data when JSON is specified', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify');
         expect(ops.qs).to.deep.equal({ email: email, token: token, response_type: 'json' });
@@ -285,7 +287,7 @@ describe('<thunder-client.js>', () => {
       }, 'json');
     });
 
-    it('calls back on bad responseType error', () => {
+    it('calls back on bad responseType error', function() {
       thunder.verifyUser(email, token, (err, statusCode, result) => {
         expect(result).to.be.undefined;
         expect(statusCode).to.be.undefined;
@@ -294,7 +296,7 @@ describe('<thunder-client.js>', () => {
       }, 'badType');
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         callback(new Error('A verify error occurred.'));
       });
@@ -306,7 +308,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'get').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad verify request');
       });
@@ -319,8 +321,8 @@ describe('<thunder-client.js>', () => {
     });
   });
 
-  describe('#resetVerificationStatus()', () => {
-    it('uses the correct request data', () => {
+  describe('#resetVerificationStatus()', function() {
+    it('uses the correct request data', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         expect(ops.url).to.equal('/verify/reset');
         expect(ops.qs).to.deep.equal({ email: email });
@@ -335,7 +337,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on request error', () => {
+    it('calls back on request error', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         callback(new Error('A send email error occurred.'));
       });
@@ -347,7 +349,7 @@ describe('<thunder-client.js>', () => {
       });
     });
 
-    it('calls back on status code error', () => {
+    it('calls back on status code error', function() {
       sinon.stub(request, 'post').callsFake(function(ops, callback) {
         callback(null, { statusCode: 400 }, 'Bad reset verification status request');
       });
